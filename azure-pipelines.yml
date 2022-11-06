@@ -1,5 +1,46 @@
 trigger:
-- main
+
+- master
+
+
+
+pool:
+
+  vmImage: ubuntu-latest
+
+
+
+steps:
+
+- checkout: self
+
+  persistCredentials: true
+
+
+
+- script: |
+
+   git config --global user.email bhanuprakash4600@outlook.com & git config --global user.name "prakash4600"
+
+  workingDirectory: $(System.DefaultWorkingDirectory)
+
+
+
+- script: |
+
+   git checkout -b master
+
+   echo 'This is a test' > data.txt
+
+   git add -A
+
+   git commit -m "deployment $(Build.BuildNumber)"
+
+   git push --set-upstream origin master 
+
+  displayName: Add data.txt file
+
+  workingDirectory: $(System.DefaultWorkingDirectory)
 - task: GitHubRelease@1
   inputs:
     repositoryName: '$(Build.Repository.Name)'
