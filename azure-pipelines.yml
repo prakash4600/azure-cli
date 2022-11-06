@@ -1,6 +1,6 @@
 resources:
   repositories:
-  - repository: GitHubRepoA # The name used to reference this repository in the checkout step
+  - repository: bash # The name used to reference this repository in the checkout step
     type: github
     endpoint: prakash4600
     name: prakash4600
