@@ -1,3 +1,5 @@
+trigger:
+- main
 - task: GitHubRelease@1
   inputs:
     repositoryName: '$(Build.Repository.Name)'
