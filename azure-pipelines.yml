@@ -1,6 +1,9 @@
-resources:
-  repositories:
-  - repository: bash # The name used to reference this repository in the checkout step
-    type: github
-    endpoint: prakash4600
-    name: prakash4600
+- task: GitHubRelease@1
+  inputs:
+    repositoryName: '$(Build.Repository.Name)'
+    action: 'create'
+    target: '$(Build.SourceVersion)'
+    tagSource: 'gitTag'
+    changeLogCompareToRelease: 'lastFullRelease'
+    changeLogType: 'commitBased'
+    
